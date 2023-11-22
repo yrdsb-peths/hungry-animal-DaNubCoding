@@ -1,14 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Elephant extends Actor
-{
-    public void act()
-    {
+public class Elephant extends Sprite {
+    public void tick() {
         if (Greenfoot.isKeyDown("left")) {
-            move(-3);
+            this.setLocation(getX() - 3, getY());
         }
         if (Greenfoot.isKeyDown("right")) {
-            move(3);
+            this.setLocation(getX() + 3, getY());
+        }
+        
+        if (isTouching(Apple.class)) {
+            this.removeTouching(Apple.class);
+            this.world.spawnApple();
         }
     }
 }
