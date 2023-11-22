@@ -7,7 +7,7 @@ public abstract class Sprite extends Actor {
     public void act() {
         if (!this.initialized) {
             this.init();
-            this.initialized = false;
+            this.initialized = true;
         }
         this.tick();
     }
