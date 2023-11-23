@@ -11,7 +11,6 @@ public class Elephant extends Sprite {
         
         if (isTouching(Apple.class)) {
             this.removeTouching(Apple.class);
-            this.world.spawnApple();
         }
     }
 }
