@@ -2,6 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class MyWorld extends World
 {
+    public int score;
+    public Label scoreLabel;
+
     public MyWorld()
     {
         super(600, 400, 1, false);
@@ -9,7 +12,11 @@ public class MyWorld extends World
         addObject(main, -100, -100);
         Elephant elephant = new Elephant();
         addObject(elephant, 300, 300);
-        spawnApple();
+
+        this.score = 0;
+        scoreLabel = new Label(this.score, 50);
+        this.scoreLabel.setText(this.score);
+        addObject(this.scoreLabel, 30, 30);
     }
     
     public void spawnApple() {
