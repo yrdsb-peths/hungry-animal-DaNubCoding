@@ -3,21 +3,20 @@ import greenfoot.*;
 public class Label extends Sprite {
     private String text;
     private int size;
-    private boolean modified = false;
 
-    public Label(MyWorld world, int x, int y, String text, int size) {
-        super(world, x, y);
+    public Label(Game game, int x, int y, String text, int size) {
+        super(game, x, y);
         this.text = text;
         this.size = size;
         this.updateImage(this.text);
     }
 
-    public Label(MyWorld world, int x, int y, int num, int size) {
-        this(world, x, y, Integer.toString(num), size);
+    public Label(Game game, int x, int y, int num, int size) {
+        this(game, x, y, Integer.toString(num), size);
     }
 
-    public Label(MyWorld world, int x, int y, double num, int size) {
-        this(world, x, y, Double.toString(num), size);
+    public Label(Game game, int x, int y, double num, int size) {
+        this(game, x, y, Double.toString(num), size);
     }
     
     public void tick() {
@@ -26,7 +25,6 @@ public class Label extends Sprite {
 
     public void setText(String text) {
         this.text = text;
-        this.modified = true;
         this.updateImage(this.text);
     }
 
@@ -39,6 +37,6 @@ public class Label extends Sprite {
     }
 
     private void updateImage(String text) {
-        setImage(new GreenfootImage(text, size, new Color(0, 0, 0), new Color(0, 0, 0, 0)));
+        this.setImage(new GreenfootImage(text, size, new Color(0, 0, 0), new Color(0, 0, 0, 0)));
     }
 }
