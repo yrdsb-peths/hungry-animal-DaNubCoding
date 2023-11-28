@@ -4,6 +4,7 @@ public class MyWorld extends World
 {
     public int score;
     public Label scoreLabel;
+    private boolean ended = false;
 
     public MyWorld()
     {
@@ -15,12 +16,18 @@ public class MyWorld extends World
 
         this.score = 0;
         scoreLabel = new Label(this.score, 50);
-        this.scoreLabel.setText(this.score);
         addObject(this.scoreLabel, 30, 30);
     }
     
     public void spawnApple() {
+        if (this.ended) return;
         Apple apple = new Apple();
         addObject(apple, Greenfoot.getRandomNumber(600), 0);
+    }
+
+    public void endGame() {
+        this.ended = true;
+        Label endLabel = new Label("Game Over!", 100);
+        addObject(endLabel, getWidth() / 2, getHeight() / 2);
     }
 }
