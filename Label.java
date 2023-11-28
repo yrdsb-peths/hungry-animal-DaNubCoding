@@ -1,29 +1,41 @@
 import greenfoot.*;
 
-public class Label extends Actor {
+public class Label extends Sprite {
     private String text;
     private int size;
+    private boolean modified = false;
 
-    public Label(String text, int size) {
+    public Label(MyWorld world, int x, int y, String text, int size) {
+        super(world, x, y);
         this.text = text;
         this.size = size;
-        updateImage(this.text);
+        this.updateImage(this.text);
     }
 
-    public Label(int text, int size) {
-        this.text = Integer.toString(text);
-        this.size = size;
-        updateImage(this.text);
+    public Label(MyWorld world, int x, int y, int num, int size) {
+        this(world, x, y, Integer.toString(num), size);
+    }
+
+    public Label(MyWorld world, int x, int y, double num, int size) {
+        this(world, x, y, Double.toString(num), size);
+    }
+    
+    public void tick() {
+        // No logic
     }
 
     public void setText(String text) {
         this.text = text;
-        updateImage(this.text);
+        this.modified = true;
+        this.updateImage(this.text);
     }
 
-    public void setText(int text) {
-        this.text = Integer.toString(text);
-        updateImage(this.text);
+    public void setText(int num) {
+        this.setText(Integer.toString(num));
+    }
+
+    public void setText(double num) {
+        this.setText(Double.toString(num));
     }
 
     private void updateImage(String text) {

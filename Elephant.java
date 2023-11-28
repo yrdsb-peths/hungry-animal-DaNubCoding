@@ -1,6 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Elephant extends Sprite {
+    public Elephant(MyWorld world) {
+        super(world, 300, 300);
+    }
+
     public void tick() {
         if (Greenfoot.isKeyDown("left")) {
             this.setLocation(getX() - 3, getY());
