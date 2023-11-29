@@ -10,6 +10,8 @@ public class Game extends World
     public Game()
     {
         super(600, 400, 1, false);
+        this.setBackground("background.jpg");
+        
         Elephant elephant = new Elephant(this);
 
         this.score = 0;
