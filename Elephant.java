@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Elephant extends Sprite {
+    private GreenfootSound eatSound = new GreenfootSound("elephantcub.mp3");
+    
     public Elephant(Game game) {
         super(game, 300, 300);
     }
@@ -14,8 +16,13 @@ public class Elephant extends Sprite {
         }
         
         if (isTouching(Apple.class)) {
-            this.removeTouching(Apple.class);
-            this.game.increaseScore(1);
+            this.eatApple();
         }
+    }
+    
+    private void eatApple() {
+        this.removeTouching(Apple.class);
+        this.game.increaseScore(1);
+        this.eatSound.play();
     }
 }
