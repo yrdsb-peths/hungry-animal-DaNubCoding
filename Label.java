@@ -1,11 +1,13 @@
 import greenfoot.*;
 
-public class Label extends Sprite {
+public class Label extends Actor {
+    private World world;
     private String text;
     private int size;
 
-    public Label(Game game, int x, int y, String text, int size) {
-        super(game, x, y);
+    public Label(World world, int x, int y, String text, int size) {
+        this.world = world;
+        this.world.addObject(this, x, y);
         this.text = text;
         this.size = size;
         this.updateImage(this.text);
