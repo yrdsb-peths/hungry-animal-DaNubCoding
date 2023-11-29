@@ -1,11 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public abstract class Sprite extends Actor {
-    protected Game game;
+    protected World world;
 
-    public Sprite(Game game, int x, int y) {
-        this.game = game;
-        this.game.addObject(this, x, y);
+    public Sprite(World world, int x, int y) {
+        this.world = world;
+        this.world.addObject(this, x, y);
     }
 
     public void act() {

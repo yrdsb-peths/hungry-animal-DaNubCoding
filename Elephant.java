@@ -22,7 +22,7 @@ public class Elephant extends Sprite {
     
     private void eatApple() {
         this.removeTouching(Apple.class);
-        this.game.increaseScore(1);
+        this.world.increaseScore(1);
         this.eatSound.play();
     }
 }

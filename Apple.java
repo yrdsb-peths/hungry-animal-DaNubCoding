@@ -8,8 +8,8 @@ public class Apple extends Sprite {
     public void tick() {
         this.setLocation(this.getX(), this.getY() + 3);
         if (this.getY() > 400) {
-            this.game.clearApples();
-            this.game.endGame();
+            this.world.clearApples();
+            this.world.endGame();
         }
     }
 }
