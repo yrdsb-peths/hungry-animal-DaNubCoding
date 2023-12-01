@@ -5,20 +5,12 @@ public class Label extends Actor {
     private String text;
     private int size;
 
-    public Label(World world, int x, int y, String text, int size) {
+    public <T> Label(World world, int x, int y, T text, int size) {
         this.world = world;
         this.world.addObject(this, x, y);
-        this.text = text;
+        this.text = Utils.String(text);
         this.size = size;
         this.updateImage(this.text);
-    }
-
-    public Label(Game game, int x, int y, int num, int size) {
-        this(game, x, y, Integer.toString(num), size);
-    }
-
-    public Label(Game game, int x, int y, double num, int size) {
-        this(game, x, y, Double.toString(num), size);
     }
     
     public void tick() {
