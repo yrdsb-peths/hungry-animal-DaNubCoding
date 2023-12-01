@@ -6,20 +6,21 @@ public class Elephant extends Sprite {
     
     public Elephant(Game game) {
         super(game, 300, 300);
+        this.image.scale(this.image.getWidth() * 2, this.image.getHeight() * 2);
     }
 
     public void tick() {
         if (Greenfoot.isKeyDown("left")) {
             this.setLocation(getX() - 3, getY());
             if (!this.mirrored) {
-                this.getImage().mirrorHorizontally();
+                this.image.mirrorHorizontally();
                 this.mirrored = true;
             }
         }
         if (Greenfoot.isKeyDown("right")) {
             this.setLocation(getX() + 3, getY());
             if (this.mirrored) {
-                this.getImage().mirrorHorizontally();
+                this.image.mirrorHorizontally();
                 this.mirrored = false;
             }
         }
