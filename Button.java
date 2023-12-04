@@ -12,7 +12,7 @@ public class Button extends Actor
     private int size;
     private GreenfootImage image;
     
-    public Button(World world, int x, int y, int w, int h, String text, int size) {
+    public <T> Button(World world, int x, int y, int w, int h, T text, int size) {
         this.world = world;
         this.world.addObject(this, x, y);
         
@@ -20,7 +20,7 @@ public class Button extends Actor
         this.y = y;
         this.w = w;
         this.h = h;
-        this.text = text;
+        this.text = Utils.String(text);
         this.size = size;
         
         this.image = new GreenfootImage(this.w, this.h);
