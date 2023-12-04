@@ -11,8 +11,9 @@ public class Button extends Actor
     private Label label;
     private int size;
     private GreenfootImage image;
+    private Runnable onPress;
     
-    public <T> Button(World world, int x, int y, int w, int h, T text, int size) {
+    public <T> Button(World world, int x, int y, int w, int h, T text, int size, Runnable onPress) {
         this.world = world;
         this.world.addObject(this, x, y);
         
@@ -22,6 +23,7 @@ public class Button extends Actor
         this.h = h;
         this.text = Utils.String(text);
         this.size = size;
+        this.onPress = onPress;
         
         this.image = new GreenfootImage(this.w, this.h);
         this.image.setColor(new Color(0, 255, 255));
@@ -37,7 +39,7 @@ public class Button extends Actor
         if (mouse == null) return;
 
         if (mouse.getActor() == this && mouse.getButton() == 1) {
-            Greenfoot.setWorld(new Game());
+            this.onPress.run();
         }
     }
 }
