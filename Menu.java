@@ -8,21 +8,34 @@ public class Menu extends World
             this.getWidth() / 2, this.getHeight() / 2 - 60, // Position
             "Hungry Animal", 80                             // Text
         );
+        
+        Style[] buttonIdleStyle = {
+            new Style("bgColor", new Color(0, 255, 255))
+        };
+        Style[] buttonHoverStyle = {
+            new Style("w", 220 + 30),
+            new Style("h", 70 + 30),
+            new Style("fontSize", 46),
+            new Style("bgColor", new Color(255, 0, 0))
+        };
+        Style[] buttonClickStyle = {
+            new Style("bgColor", new Color(255, 255, 0)),
+            new Style("textColor", new Color(255, 0, 0))
+        };
+        
         new Button(this,
             this.getWidth() / 2, this.getHeight() / 2 + 60, // Position
             220, 70,                                        // Size
             "Start Game", 40,                               // Text
             this::newGame                                   // Function
-        ).onIdle(
-            new Style("bgColor", new Color(0, 255, 255))
-        ).onHover(
-            new Style("w", 220 + 30),
-            new Style("h", 70 + 30),
-            new Style("fontSize", 46),
-            new Style("bgColor", new Color(255, 0, 0))
-        ).onClick(
-            new Style("bgColor", new Color(255, 255, 0))
-        );
+        ).applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle);
+        
+        new Button(this,
+            this.getWidth() / 2, this.getHeight() / 2 + 160, // Position
+            220, 70,                                         // Size
+            "idk", 40,                                       // Text
+            this::newGame                                    // Function
+        ).applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle);
     }
     
     private void newGame() {

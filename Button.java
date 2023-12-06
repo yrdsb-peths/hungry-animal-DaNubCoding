@@ -128,6 +128,24 @@ public class Button extends Actor
         return this;
     }
     
+    public Button applyStyles(Style[] idle) {
+        this.onIdle(idle);
+        return this;
+    }
+    
+    public Button applyStyles(Style[] idle, Style[] hover) {
+        this.onIdle(idle);
+        this.onHover(hover);
+        return this;
+    }
+    
+    public Button applyStyles(Style[] idle, Style[] hover, Style[] click) {
+        this.onIdle(idle);
+        this.onHover(hover);
+        this.onClick(click);
+        return this;
+    }
+    
     public String getState() {
         return this.state;
     }
