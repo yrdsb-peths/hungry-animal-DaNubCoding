@@ -30,6 +30,8 @@ public class Button extends Actor
     public StyleField<Integer> fontSize = new StyleField();
     public StyleField<Color> textColor = new StyleField();
     public StyleField<Color> bgColor = new StyleField();
+    public StyleField<Integer> borderWidth = new StyleField();
+    public StyleField<Color> borderColor = new StyleField();
     
     /**
      * Intializes the Button
@@ -58,6 +60,8 @@ public class Button extends Actor
         
         this.textColor.setAll(new Color(0, 0, 0));
         this.bgColor.setAll(new Color(222, 222, 222));
+        this.borderWidth.setAll(0);
+        this.borderColor.setAll(new Color(0, 0, 0));
         
         this.updateAllImages();
     }
@@ -76,9 +80,11 @@ public class Button extends Actor
             return;
         }
 
+        // Fill background color
         image.setColor(this.bgColor.get(state));
         image.fill();
         
+        // Draw text
         GreenfootImage textImage = new GreenfootImage(
             this.text.get(state),      // Text
             this.fontSize.get(state),  // Font Size
@@ -90,6 +96,16 @@ public class Button extends Actor
             this.w.get(state) / 2 - textImage.getWidth() / 2, // x position
             this.h.get(state) / 2 - textImage.getHeight() / 2 // y position
         );
+        
+        // Draw border
+        int thickness = this.borderWidth.get(state);
+        if (thickness != 0) {
+            image.setColor(this.borderColor.get(state));
+            int w = this.w.get(state), h = this.h.get(state);
+            int[] xPoints = {0, w, w, 0, 0, thickness, w - thickness, w - thickness, thickness, thickness};
+            int[] yPoints = {0, 0, h, h, 0, thickness, thickness, h - thickness, h - thickness, thickness};
+            image.fillPolygon(xPoints, yPoints, 10);
+        }
     }
     
     /**

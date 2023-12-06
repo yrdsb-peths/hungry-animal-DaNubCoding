@@ -10,7 +10,9 @@ public class Menu extends World
         );
         
         Style[] buttonIdleStyle = {
-            new Style("bgColor", new Color(0, 255, 255))
+            new Style("bgColor", new Color(0, 255, 255)),
+            new Style("borderWidth", 4),
+            new Style("borderColor", new Color(0, 255, 0))
         };
         Style[] buttonHoverStyle = {
             new Style("w", 220 + 30),
@@ -35,7 +37,9 @@ public class Menu extends World
             220, 70,                                         // Size
             "idk", 40,                                       // Text
             this::newGame                                    // Function
-        ).applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle);
+        ).applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle)
+        .onHover(new Style("text", "lol"))
+        .onClick(new Style("text", "lmao"));
     }
     
     private void newGame() {
