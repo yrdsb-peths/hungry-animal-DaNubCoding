@@ -4,10 +4,6 @@ public class StyleField<T> {
     public T hover;
     public T click;
     
-    public StyleField(String name) {
-        this.name = name;
-    }
-    
     public T getIdle() {
         return this.idle;
     }
