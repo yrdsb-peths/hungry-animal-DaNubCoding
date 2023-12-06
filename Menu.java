@@ -13,6 +13,15 @@ public class Menu extends World
             220, 70,                                        // Size
             "Start Game", 40,                               // Text
             this::newGame                                   // Function
+        ).onIdle(
+            new Style("bgColor", new Color(0, 255, 255))
+        ).onHover(
+            new Style("w", 220 + 30),
+            new Style("h", 70 + 30),
+            new Style("fontSize", 46),
+            new Style("bgColor", new Color(255, 0, 0))
+        ).onClick(
+            new Style("bgColor", new Color(255, 255, 0))
         );
     }
     

@@ -1,0 +1,1 @@
+public record Style (String name, Object value) {}
