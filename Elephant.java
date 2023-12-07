@@ -17,18 +17,24 @@ public class Elephant extends Sprite {
 
     public void tick() {
         if (Greenfoot.isKeyDown("left")) {
-            this.setLocation(getX() - 3, getY());
+            this.setLocation(this.getX() - 3, this.getY());
             if (!this.mirrored) {
                 this.image.mirrorHorizontally();
                 this.mirrored = true;
             }
         }
         if (Greenfoot.isKeyDown("right")) {
-            this.setLocation(getX() + 3, getY());
+            this.setLocation(this.getX() + 3, this.getY());
             if (this.mirrored) {
                 this.image.mirrorHorizontally();
                 this.mirrored = false;
             }
+        }
+        
+        if (this.getX() < 0) {
+            this.setLocation(this.game.getWidth(), this.getY());
+        } else if (this.getX() > this.game.getWidth()) {
+            this.setLocation(0, this.getY());
         }
         
         if (isTouching(Apple.class)) {

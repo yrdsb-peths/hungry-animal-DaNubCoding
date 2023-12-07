@@ -29,11 +29,6 @@ public class Menu extends World
         new Button(this, this.getWidth() / 2, this.getHeight() / 2 + 60, 220, 70, "Start Game", this::newGame)
             .applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle)
             .onIdle(new Style("image", new GreenfootImage("wood.jpeg")));
-        
-        new Button(this, this.getWidth() / 2, this.getHeight() / 2 + 160, 220, 70, "idk", this::newGame)
-            .applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle)
-            .onHover(new Style("text", "lol"))
-            .onClick(new Style("text", "lmao"));
     }
     
     private void newGame() {
