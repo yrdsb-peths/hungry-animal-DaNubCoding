@@ -24,6 +24,7 @@ public class Button extends Actor
     public StyleField<Integer> w = new StyleField();
     public StyleField<Integer> h = new StyleField();
     public StyleField<String> text = new StyleField();
+    public StyleField<GreenfootImage> image = new StyleField();
     public StyleField<Integer> fontSize = new StyleField();
     public StyleField<Color> textColor = new StyleField();
     public StyleField<Color> bgColor = new StyleField();
@@ -81,6 +82,12 @@ public class Button extends Actor
         image.setColor(this.bgColor.get(state));
         image.fill();
         
+        // Draw image
+        if (this.image.get(state) != null) {
+            this.image.get(state).scale(this.w.get(state), this.h.get(state));
+            image.drawImage(this.image.get(state), 0, 0);
+        }
+        
         // Draw text
         GreenfootImage textImage = new GreenfootImage(
             this.text.get(state),      // Text
@@ -137,7 +144,7 @@ public class Button extends Actor
                 StyleField field = (StyleField) this.getClass().getField(style.name()).get(this);
                 field.setAll(style.value());
             } catch (Exception e) {
-                System.out.println("Invalid field '" + style.name() + "'!" + e);
+                System.out.println("Invalid field '" + style.name() + "'!");
             }
         }
         this.updateAllImages();
