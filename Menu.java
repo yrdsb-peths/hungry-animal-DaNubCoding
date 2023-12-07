@@ -25,21 +25,13 @@ public class Menu extends World
             new Style("textColor", new Color(255, 0, 0))
         };
         
-        new Button(this,
-            this.getWidth() / 2, this.getHeight() / 2 + 60, // Position
-            220, 70,                                        // Size
-            "Start Game", 40,                               // Text
-            this::newGame                                   // Function
-        ).applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle);
+        new Button(this, this.getWidth() / 2, this.getHeight() / 2 + 60, 220, 70, "Start Game", this::newGame)
+            .applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle);
         
-        new Button(this,
-            this.getWidth() / 2, this.getHeight() / 2 + 160, // Position
-            220, 70,                                         // Size
-            "idk", 40,                                       // Text
-            this::newGame                                    // Function
-        ).applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle)
-        .onHover(new Style("text", "lol"))
-        .onClick(new Style("text", "lmao"));
+        new Button(this, this.getWidth() / 2, this.getHeight() / 2 + 160, 220, 70, "idk", this::newGame)
+            .applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle)
+            .onHover(new Style("text", "lol"))
+            .onClick(new Style("text", "lmao"));
     }
     
     private void newGame() {

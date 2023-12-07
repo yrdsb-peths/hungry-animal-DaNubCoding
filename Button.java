@@ -9,7 +9,6 @@ public class Button extends Actor
 
     private World world;
     private Label label;
-    private GreenfootImage image;
     public GreenfootImage idleImage;
     public GreenfootImage hoverImage;
     public GreenfootImage clickImage;
@@ -18,8 +17,6 @@ public class Button extends Actor
     // Whether the mouse down event occurred on the button
     private boolean mouseDownOnThis = false;
     private boolean hovering = false;
-    // Hovering does this weird thing where it flickers between on and off
-    private boolean hoverSustain = false;
     private String state = "idle";
     
     public StyleField<Integer> x = new StyleField();
@@ -45,7 +42,7 @@ public class Button extends Actor
      * @param fontSize The size of the font to display the text with
      * @param func Reference to the function to run when the button is clicked
      */
-    public <T> Button(World world, int x, int y, int w, int h, T text, int fontSize, Runnable func) {
+    public <T> Button(World world, int x, int y, int w, int h, T text, Runnable func) {
         this.world = world;
         this.world.addObject(this, x, y);
         
@@ -56,8 +53,8 @@ public class Button extends Actor
         this.w.setAll(w);
         this.h.setAll(h);
         this.text.setAll(Utils.String(text));
-        this.fontSize.setAll(fontSize);
         
+        this.fontSize.setAll(20);
         this.textColor.setAll(new Color(0, 0, 0));
         this.bgColor.setAll(new Color(222, 222, 222));
         this.borderWidth.setAll(0);
@@ -239,7 +236,7 @@ public class Button extends Actor
     }
     
     /**
-     * Handle the mouse logic of the button (i.e. whether the mouse is hovering over it)
+     * Handle the mouse logic of the button (i.e. whether or not the mouse is hovering over it)
      */
     private void handleMouseLogic() {
         MouseInfo mouse = Greenfoot.getMouseInfo();
