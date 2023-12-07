@@ -10,6 +10,7 @@ public class Menu extends World
         );
         
         Style[] buttonIdleStyle = {
+            new Style("fontSize", 40),
             new Style("bgColor", new Color(0, 255, 255)),
             new Style("borderWidth", 4),
             new Style("borderColor", new Color(0, 255, 0))
