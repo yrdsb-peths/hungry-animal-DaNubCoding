@@ -1,6 +1,5 @@
 #Greenfoot project file
 class.Apple.image=apple.png
-class.Elephant.image=elephant_idle.png
 dependency1.from=Game
 dependency1.to=Label
 dependency1.type=UsesDependency
