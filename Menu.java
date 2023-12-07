@@ -19,11 +19,11 @@ public class Menu extends World
             new Style("w", 220 + 30),
             new Style("h", 70 + 30),
             new Style("fontSize", 46),
-            new Style("bgColor", new Color(255, 0, 0))
+            new Style("textColor", new Color(255, 0, 0))
         };
         Style[] buttonClickStyle = {
             new Style("bgColor", new Color(255, 255, 0)),
-            new Style("textColor", new Color(255, 0, 0))
+            new Style("bgColor", new Color(255, 0, 0))
         };
         
         new Button(this, this.getWidth() / 2, this.getHeight() / 2 + 60, 220, 70, "Start Game", this::newGame)
