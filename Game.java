@@ -3,7 +3,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Game extends World
 {
     private int score;
+    private int timeScore;
     private Label scoreLabel;
+    private Label timeScoreLabel;
+    private Timer survivalTimer;
     private Timer appleTimer;
     private boolean ended = false;
     private Timer endTimer;
@@ -17,15 +20,25 @@ public class Game extends World
         
         this.appleTimer = new Timer(2000);
         this.endTimer = new Timer(3000, true);
+        this.survivalTimer = new Timer(1000);
 
         this.score = 0;
         this.scoreLabel = new Label(this, 30, 30, this.score, 50);
+        
+        this.timeScore = 0;
+        this.timeScoreLabel = new Label(this, 80, 70, "Time: " + this.timeScore, 50);
     }
     
     public void act() {
         if (this.appleTimer.ended()) {
             this.spawnApple();
             this.appleTimer.restart();
+        }
+        
+        if (this.survivalTimer.ended() && !this.ended){
+            this.timeScore++;
+            this.timeScoreLabel.setText("Time: " + this.timeScore);
+            this.survivalTimer.restart();
         }
         
         if (this.endTimer.ended()) {
