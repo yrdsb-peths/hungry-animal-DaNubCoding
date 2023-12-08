@@ -52,7 +52,7 @@ public class Button extends Actor
         public T get(String type) throws IllegalArgumentException {
             try {
                 return (T) this.getClass().getField(type).get(this);
-            } catch (Exception e) {
+            } catch (NoSuchFieldException | IllegalAccessException e) {
                 throw new IllegalArgumentException("Invalid type! (can be: 'idle', 'hover', 'click')");
             }
         }
@@ -132,7 +132,7 @@ public class Button extends Actor
         GreenfootImage image = new GreenfootImage(this.w.get(state), this.h.get(state));
         try {
             this.getClass().getField(state + "Image").set(this, image);
-        } catch (Exception e) {
+        } catch (NoSuchFieldException | IllegalAccessException e) {
             System.out.println("Unable to access field: " + state + "Image");
             return;
         }
@@ -202,8 +202,8 @@ public class Button extends Actor
             try {
                 StyleField field = (StyleField) this.getClass().getField(style.name()).get(this);
                 field.setAll(style.value());
-            } catch (Exception e) {
-                System.out.println("Invalid field '" + style.name() + "'!");
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                System.out.println("" + e + "Invalid field '" + style.name() + "'!");
             }
         }
         this.updateAllImages();
@@ -223,8 +223,8 @@ public class Button extends Actor
                 StyleField field = (StyleField) this.getClass().getField(style.name()).get(this);
                 field.setHover(style.value());
                 field.setClick(style.value());
-            } catch (Exception e) {
-                System.out.println("Invalid field '" + style.name() + "'!");
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                System.out.println("" + e + "Invalid field '" + style.name() + "'!");
             }
         }
         this.updateImage("hover");
@@ -244,8 +244,8 @@ public class Button extends Actor
             try {
                 StyleField field = (StyleField) this.getClass().getField(style.name()).get(this);
                 field.setClick(style.value());
-            } catch (Exception e) {
-                System.out.println("Invalid field '" + style.name() + "'!");
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                System.out.println("" + e + "Invalid field '" + style.name() + "'!");
             }
         }
         this.updateImage("click");

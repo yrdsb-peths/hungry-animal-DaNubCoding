@@ -24,46 +24,30 @@ public record Style(String name, Object value) {
         return new Add(addend);
     }
     
-    public static class Subtract extends Modifier<Integer> {
-        public Subtract(int subtrahend) {
-            this.modification = subtrahend;
+    public static Add subtract(int subtrahend) {
+        return new Add(-subtrahend);
+    }
+    
+    public static class Percent extends Modifier<Integer> {
+        public Percent(int percentage) {
+            this.modification = percentage;
         }
         
         public Integer apply(Integer value) {
-            return value - this.modification;
+            return value * this.modification / 100;
         }
     }
     
-    public static Subtract subtract(int subtrahend) {
-        return new Subtract(subtrahend);
+    public static Percent percent(int percentage) {
+        return new Percent(percentage);
     }
     
-    public static class Multiply extends Modifier<Double> {
-        public Multiply(double multiplier) {
-            this.modification = multiplier;
-        }
-        
-        public Double apply(Double value) {
-            return value * this.modification;
-        }
+    public static Percent multiply(double multiplier) {
+        return new Percent((int) (multiplier * 100));
     }
     
-    public static Multiply multiply(double multiplier) {
-        return new Multiply(multiplier);
-    }
-    
-    public static class Divide extends Modifier<Double> {
-        public Divide(double divisor) {
-            this.modification = divisor;
-        }
-        
-        public Double apply(Double value) {
-            return value / this.modification;
-        }
-    }
-    
-    public static Divide divide(double divisor) {
-        return new Divide(divisor);
+    public static Percent divide(double divisor) {
+        return new Percent((int) (100 / divisor));
     }
     
     public Style(String name, Object value) {
