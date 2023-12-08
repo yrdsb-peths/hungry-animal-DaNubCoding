@@ -5,6 +5,65 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Button extends Actor
 {
+    /**
+     * Stores the styles of the three possible states of a field
+     */
+    private class StyleField<T> {
+        public T idle;
+        public T hover;
+        public T click;
+        
+        public T getIdle() {
+            return this.idle;
+        }
+        
+        public void setIdle(T value) {
+            if (value instanceof Style.Modifier) {
+                this.idle = ((Style.Modifier<T>) value).apply(this.idle);
+            } else {
+                this.idle = value;
+            }
+        }
+        
+        public T getHover() {
+            return this.hover;
+        }
+        
+        public void setHover(T value) {
+            if (value instanceof Style.Modifier) {
+                this.hover = ((Style.Modifier<T>) value).apply(this.hover);
+            } else {
+                this.hover = value;
+            }
+        }
+        
+        public T getClick() {
+            return this.click;
+        }
+        
+        public void setClick(T value) {
+            if (value instanceof Style.Modifier) {
+                this.click = ((Style.Modifier<T>) value).apply(this.click);
+            } else {
+                this.click = value;
+            }
+        }
+        
+        public T get(String type) throws IllegalArgumentException {
+            try {
+                return (T) this.getClass().getField(type).get(this);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("Invalid type! (can be: 'idle', 'hover', 'click')");
+            }
+        }
+        
+        public void setAll(T value) {
+            this.setIdle(value);
+            this.setHover(value);
+            this.setClick(value);
+        }
+    }
+    
     static private Actor mouseOver;
 
     private World world;

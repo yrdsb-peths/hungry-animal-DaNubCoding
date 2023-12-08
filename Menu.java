@@ -16,8 +16,8 @@ public class Menu extends World
             new Style("borderColor", new Color(0, 255, 0))
         };
         Style[] buttonHoverStyle = {
-            new Style("w", 220 + 30),
-            new Style("h", 70 + 30),
+            new Style("w", Style.subtract(30)),
+            new Style("h", Style.add(30)),
             new Style("fontSize", 46),
             new Style("bgColor", new Color(255, 0, 0))
         };
