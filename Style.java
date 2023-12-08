@@ -8,7 +8,7 @@ public record Style(String name, Object value) {
     /**
      * An abstract superclass for all modifiers that modify a style dynamically
      */
-    private static abstract class Modifier<T> {
+    public static abstract class Modifier<T> {
         protected T modification;
         
         /**

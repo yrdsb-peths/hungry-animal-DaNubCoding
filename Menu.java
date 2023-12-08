@@ -35,7 +35,7 @@ public class Menu extends World
         new Button(this, this.getWidth() / 2, this.getHeight() / 2 + 150, 220, 70, "idk", this::newGame)
             .applyStyles(buttonIdleStyle, buttonHoverStyle, buttonClickStyle)
             .onHover(new Style("text", "lol"))
-            .onClick(new Style("text", "lmao"));
+            .onClick(new Style("text", "lmao"), new Style("fontSize", Style.percent(120)));
     }
     
     private void newGame() {
