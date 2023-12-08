@@ -13,10 +13,20 @@ public class Button extends Actor
         public T hover;
         public T click;
         
+        /**
+         * Get the value of the style in idle state
+         * 
+         * @return The value of the style in idle state
+         */
         public T getIdle() {
             return this.idle;
         }
         
+        /**
+         * Set the idle state style
+         * 
+         * @param value The value of the idle state style, can be a value or a modifier
+         */
         public void setIdle(T value) {
             if (value instanceof Style.Modifier) {
                 this.idle = ((Style.Modifier<T>) value).apply(this.idle);
@@ -25,10 +35,20 @@ public class Button extends Actor
             }
         }
         
+        /**
+         * Get the value of the style in hover state
+         * 
+         * @return The value of the style in hover state
+         */
         public T getHover() {
             return this.hover;
         }
         
+        /**
+         * Set the hover state style
+         * 
+         * @param value The value of the hover state style, can be a value or a modifier
+         */
         public void setHover(T value) {
             if (value instanceof Style.Modifier) {
                 this.hover = ((Style.Modifier<T>) value).apply(this.hover);
@@ -37,10 +57,20 @@ public class Button extends Actor
             }
         }
         
+        /**
+         * Get the value of the style in click state
+         * 
+         * @return The value of the style in click state
+         */
         public T getClick() {
             return this.click;
         }
         
+        /**
+         * Set the click state style
+         * 
+         * @param value The value of the click state style, can be a value or a modifier
+         */
         public void setClick(T value) {
             if (value instanceof Style.Modifier) {
                 this.click = ((Style.Modifier<T>) value).apply(this.click);
@@ -49,14 +79,25 @@ public class Button extends Actor
             }
         }
         
+        /**
+         * Get the value of the specified state
+         * 
+         * @param type The state as a string (can only be: "idle", "hover" or "click")
+         * @return The value of the state
+         */
         public T get(String type) throws IllegalArgumentException {
             try {
                 return (T) this.getClass().getField(type).get(this);
             } catch (NoSuchFieldException | IllegalAccessException e) {
-                throw new IllegalArgumentException("Invalid type! (can be: 'idle', 'hover', 'click')");
+                throw new IllegalArgumentException("Invalid type! (can only be: 'idle', 'hover', 'click')");
             }
         }
         
+        /**
+         * Convenience method to set all three states to be a value
+         * 
+         * @param value The value to set
+         */
         public void setAll(T value) {
             this.setIdle(value);
             this.setHover(value);

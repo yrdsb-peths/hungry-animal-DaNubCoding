@@ -23,6 +23,7 @@ public class Menu extends World
             new Style("bgColor", new Color(255, 0, 0))
         };
         Style[] buttonClickStyle = {
+            new Style("borderWidth", Style.multiply(3)),
             new Style("bgColor", new Color(255, 255, 0)),
             new Style("textColor", new Color(255, 0, 0))
         };
